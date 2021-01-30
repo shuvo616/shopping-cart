@@ -180,11 +180,14 @@
       }
       // Calculate Total Price, Tax and Grand Total
       function calculateTotal(){
-         const phoneInput = document.getElementById('phone-count');
-         const phoneCount = parseInt(phoneInput.value);
-
-         const caseInput = document.getElementById('case-count');
-         const caseCount = parseInt(caseInput.value);
+         // const phoneInput = document.getElementById('phone-count');
+         // const phoneCount = parseInt(phoneInput.value);
+         // call the inputValue function instead of two line code above.
+         const phoneCount = getInputValue('phone');
+         // const caseInput = document.getElementById('case-count');
+         // const caseCount = parseInt(caseInput.value);
+         // call the inputValue function instead of two line code above.
+         const caseCount = getInputValue('case');
 
          const totalPrice = phoneCount * 1219 + caseCount * 59;
          document.getElementById('total-price').innerText = "$" + totalPrice;
@@ -194,6 +197,12 @@
 
          const grandTotal = totalPrice + tax;
          document.getElementById('grand-total').innerText = "$" + grandTotal;
+      }
+      // Another function for total price to reduce duplicate code
+      function getInputValue(product){
+         const productInput = document.getElementById(product + '-count');
+         const productCount = parseInt(productInput.value);
+         return productCount;
       }
    </script>
 </body>
